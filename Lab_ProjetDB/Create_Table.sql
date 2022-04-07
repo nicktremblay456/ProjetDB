@@ -1,5 +1,5 @@
 create table students (
-	StudentID int not null auto_increment unique,
+	StudentID int auto_increment,
     FirstName varchar(50) not null,
     LastName varchar(50) not null,
     Age int not null,
@@ -13,7 +13,7 @@ create table students (
 );
 
 create table phones (
-	PhoneID int not null auto_increment unique,
+	PhoneID int auto_increment,
     Indicative int not null,
     PhoneNumber varchar(25) not null,
     
@@ -23,10 +23,11 @@ create table phones (
 );
 
 create table address (
-	AddressID int not null auto_increment unique,
+	AddressID int auto_increment,
     AddressNumber int not null,
     PostalCode varchar(25) not null,
     City varchar(25) not null,
+	Country varchar(25) not null,
     IsDeleted int default 0,
     
     primary key(AddressID),
