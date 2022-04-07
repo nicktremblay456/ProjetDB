@@ -27,7 +27,7 @@ create table address (
     AddressNumber int not null,
     PostalCode varchar(25) not null,
     City varchar(25) not null,
-	Country varchar(25) not null,
+	Country varchar(25) not null default "Canada",
     IsDeleted int default 0,
     
     primary key(AddressID),
