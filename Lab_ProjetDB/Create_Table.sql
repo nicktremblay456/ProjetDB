@@ -10,7 +10,7 @@ create table students (
     
     primary key(StudentID),
     check (Status = "Part-Time" or Status = "Full Time")
-);
+)Engine = INNODB;
 
 create table phones (
 	PhoneID int auto_increment,
@@ -20,7 +20,7 @@ create table phones (
     primary key (PhoneID),
     foreign key(PhoneID) references students(StudentID),
     check (PhoneNumber like '___-____')
-);
+)Engine = INNODB;
 
 create table address (
 	AddressID int auto_increment,
@@ -34,4 +34,4 @@ create table address (
     foreign key(AddressID) references students(StudentID),
     check (PostalCode like '___ ___'),
     check (IsDeleted = 0 or IsDeleted = 1)
-);
+)Engine = INNODB;
