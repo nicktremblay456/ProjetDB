@@ -14,16 +14,18 @@ create table students (
 
 create table phones (
 	PhoneID int auto_increment,
+    StudentID int not null,
     Indicative int not null,
     PhoneNumber varchar(25) not null,
     
     primary key (PhoneID),
-    foreign key(PhoneID) references students(StudentID),
+    foreign key(StudentID) references students(StudentID),
     check (PhoneNumber like '___-____')
 )Engine = INNODB;
 
 create table address (
 	AddressID int auto_increment,
+    StudentID int not null,
     AddressNumber int not null,
     PostalCode varchar(25) not null,
     City varchar(25) not null,
@@ -31,7 +33,7 @@ create table address (
     IsDeleted int default 0,
     
     primary key(AddressID),
-    foreign key(AddressID) references students(StudentID),
+    foreign key(StudentID) references students(StudentID),
     check (PostalCode like '___ ___'),
     check (IsDeleted = 0 or IsDeleted = 1)
 )Engine = INNODB;

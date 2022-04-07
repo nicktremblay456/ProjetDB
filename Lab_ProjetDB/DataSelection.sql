@@ -11,7 +11,7 @@ select * from students, phones;
 select FirstName, LastName, AddressNumber
 from students
 inner join address
-on students.StudentID = address.AddressID
+on students.StudentID = address.StudentID
 order by FirstName asc;
 
 -- Obtenir la liste (nom, prenom, code permanent) ou les étudiants sont agés de 30 et plus et sont a temps partiel
@@ -27,21 +27,21 @@ where Indicative = 819;
 select FirstName, LastName, PhoneNumber
 from students
 inner join phones
-on students.StudentID = phones.PhoneID
+on students.StudentID = phones.StudentID
 where TotalCredit > 12;
 
 -- Obtenir les nom, prénom et code permanent des étudiants qui habite la ville de ‘québec’ ou la ville de ‘montréal’
 select FirstName, LastName, PermanentCode
 from students
 inner join address
-on students.StudentID = address.AddressID
+on students.StudentID = address.StudentID
 where City = "Québec" or City = "Montréal";
 
 -- Obtenir les nom, prénom, code permanent des étudiants qui n’habite pas le Canada
 select FirstName, LastName, PermanentCode
 from students
 inner join address
-on students.StudentID = address.AddressID
+on students.StudentID = address.StudentID
 where Country != "Canada";
 
 -- Obtenir les rue et les villes des adresses où le code postal se termine par ‘R3W’
@@ -51,18 +51,18 @@ where right(PostalCode, 3) = "R3W";
 
 -- Obtenir tous les étudiants qui ont une adresse dans la table adresse
 select * from students
-where StudentID = address.AddressID;
+where StudentID = address.StudentID;
 
 -- Obtenir toutes les adresses ainsi que tous les numéros de téléphone
 select AddressNumber, PhoneNumber
 from address, phones
-where address.AddressID = phones.PhoneID;
+where address.AddressID = phones.StudentID;
 
 -- Obtenir les nom, prénom et numéro des étudiants qui possèdent une adresse.
 -- Si un étudiant ne possède pas d’adresse il ne doit pas être affiché.
 select FirstName, LastName
 from students
-where students.StudentID = address.AddressID;
+where students.StudentID = address.StudentID;
 
 -- Obtenir les nom, prénom et code permanent des étudiants qui ont plus de 30 ans.
 select FirstName, LastName, PermanentCode
@@ -73,5 +73,5 @@ where age > 30;
 select FirstName, LastName, PermanentCode, PhoneNumber
 from students
 inner join phones
-on students.StudentID = phones.PhoneID
+on students.StudentID = phones.StudentID
 where Age > 36;
